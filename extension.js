@@ -133,6 +133,7 @@ var GL = {
    */
   handlePageListeners:function(listeners){
     this.listeners_count = 0;
+    this.total_views = 0;
     if(listeners.length > 0){
       this.page_listeners = {};
       listeners.forEach(function(listener,index){
@@ -150,6 +151,11 @@ var GL = {
         this.stored_trackers[key].last_view = new Date().getTime();
       }.bind(this));
       appAPI.db.set("trackers_data",this.stored_trackers);
+      for(var k in this.stored_trackers){
+        if(this.stored_trackers.hasOwnProperty(k)){
+          this.total_views += this.stored_trackers[k].views;
+        }
+      }
       this.renderUI();
     }
   },
@@ -214,25 +220,14 @@ var GL = {
     var phrase = this.page_listeners[listener_id].phrase;
     var views = this.stored_trackers[listener_id].views;
     var freq = (views < 2 ? 'low' : (views < 5 ? 'avg' : 'high'));
-    var rate, pitch;
-    switch(freq){
-      case 'low':
-        rate = 1;
-        pitch = 2;
-        break;
-      case 'avg':
-        rate = 1;
-        pitch = 1;
-        break;
-      case 'high':
-        rate = 1;
-        pitch = 0;
-        break;
-    }
+    // t = amount * percent / 100
+    // percent = t * 100 / amount
+    var percent = views * 100 / this.total_views;
+    var pitch = parseFloat(Math.abs(2 - (2 * percent / 100)).toFixed(2));
     var options = {
       lang:'en-GB',
       gender:'male',
-      rate:rate,
+      rate:1,
       pitch:pitch
     }
     this.stopSpeach();
@@ -413,6 +408,7 @@ var GL = {
     this.dom.listener_phrase_wrap.addClass('speaking');
     var letters = this.current_phrase.length;
     var speed = 75 * letters;
+    var stops = this.current_phrase.match(/[\.\,\;]+/g);
     var w = this.dom.listener_phrase.width();
     this.dom.listener_phrase.css({width:w});
     this.dom.listener_phrase.animate({
