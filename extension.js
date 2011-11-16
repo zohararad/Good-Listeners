@@ -185,7 +185,8 @@ var GL = {
    * Get a random phrase by listener type
    */
   getPhraseByType:function(type){
-    var phrases = GL.phrases[type].phrases;
+    var o = GL.phrases[type];
+    var phrases = o['phrases'] || GL.phrases['Default'].phrases;
     var l = phrases.length;
     return phrases[Math.floor(l*Math.random())];
   },
@@ -239,7 +240,7 @@ var GL = {
     this.changeFlashAnimationType(this.page_listeners[listener_id].type);
     this.current_phrase = phrase;
     var f = function(){
-      var mod_phrase = phrase.replace(/god/gi,this.page_listeners[listener_id].name.indexOf('Google') > -1 ? 'GOOGLE' : 'CLOUD');
+      var mod_phrase = phrase.replace(/god/gi,this.page_listeners[listener_id].name.indexOf('Google') > -1 ? 'GOOGLE' : 'CLOUD').toLowerCase();
       appAPI.message.toBackground({'action':'tts',params:{phrase:mod_phrase,options:options}});
     }.bind(this)
     setTimeout(f,1000);
