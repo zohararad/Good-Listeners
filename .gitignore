@@ -1,1 +1,8 @@
 .project
+background.html
+background.js
+extension.js
+icons/*
+js/*
+manifest.json
+popup.html
