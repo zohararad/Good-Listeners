@@ -376,7 +376,7 @@ var GL = {
         frame = 'tracking';
         break;
       case 'Cookies':
-        frame = 'cookies';
+        frame = '"Cookies"';
         break;
       case 'Ads':
         frame = 'ads';
@@ -606,7 +606,7 @@ GL.patterns = [{
      "pattern": "gmodules\\.com\\/",
      "name": "Google Widgets",
      "id": "101",
-     "type":["Cookie","Analytics"]
+     "type":["Cookies","Analytics"]
  }, {
      "pattern": "rate\\.thummit\\.com\\/js\\/",
      "name": "Thummit",
@@ -667,32 +667,32 @@ GL.patterns = [{
      "pattern": "\\.1[12]2\\.2o7\\.net\\/",
      "name": "Omniture",
      "id": "1033",
-     "type":["Cookie","Tracker"]
+     "type":["Cookies","Tracking"]
  }, {
      "pattern": "hitbox\\.com",
      "name": "Omniture",
      "id": "1034",
-     "type":["Cookie","Tracker"]
+     "type":["Cookies","Tracking"]
  }, {
      "pattern": "\\.omtrdc\\.net\\/",
      "name": "Omniture",
      "id": "1035",
-     "type":["Cookie","Tracker"]
+     "type":["Cookies","Tracking"]
  }, {
      "pattern": "\\/(omniture|mbox|hbx|omniunih)(.*)?\\.js",
      "name": "Omniture",
      "id": "1036",
-     "type":["Cookie","Tracker"]
+     "type":["Cookies","Tracking"]
  }, {
      "pattern": "s(c)?_code[0-9a-zA-Z_-]*(\\.[0-9a-zA-Z_-]*)?\\.js",
      "name": "Omniture",
      "id": "1037",
-     "type":["Cookie","Tracker"]
+     "type":["Cookies","Tracking"]
  }, {
      "pattern": "common\\.onset\\.freedom\\.com\\/fi\\/analytics\\/cms\\/",
      "name": "Omniture",
      "id": "1038",
-     "type":["Cookie","Tracker"]
+     "type":["Cookies","Tracking"]
  }, {
      "pattern": "cetrk\\.com\\/",
      "name": "Crazy Egg",
@@ -972,22 +972,22 @@ GL.patterns = [{
      "pattern": "\\.revsci\\.net\\/",
      "name": "Revenue Science",
      "id": "45",
-     "type":"Tracker"
+     "type":"Tracking"
  }, {
      "pattern": "wunderloop\\.net\\/",
      "name": "Revenue Science",
      "id": "1051",
-     "type":"Tracker"
+     "type":"Tracking"
  }, {
      "pattern": "ad\\.targetingmarketplace\\.com\\/",
      "name": "Revenue Science",
      "id": "1052",
-     "type":"Tracker"
+     "type":"Tracking"
  }, {
      "pattern": "revsci\\.(.*)\\/gw\\.js",
      "name": "Revenue Science",
      "id": "1053",
-     "type":"Tracker"
+     "type":"Tracking"
  }, {
      "pattern": "(ads|clients|container)\\.pointroll\\.com",
      "name": "PointRoll",
